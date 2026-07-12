@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Websites Know About You | PKER05 Labs</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: "Inter", Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f5efe3;
+    color: #26332a;
+}
+
+header {
+    background: #26332a;
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 35px;
+}
+
+header p {
+    opacity: .8;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px;
+}
+
+.section-title {
+    margin-top: 40px;
+    border-left: 6px solid #4f7c4f;
+    padding-left: 15px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #0002;
+}
+
+.card h3 {
+    margin-top:0;
+}
+
+.value {
+    font-size: 18px;
+    color:#4f7c4f;
+    font-weight:bold;
+}
+
+.tag {
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    background:#dcebdc;
+    margin-top:10px;
+}
+
+.warning {
+    background:#fff3cd;
+    padding:15px;
+    border-radius:10px;
+}
+
+footer {
+    text-align:center;
+    padding:30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>What Websites Know About You</h1>
+<p>A privacy awareness project by PKER05 Labs</p>
+<p>
+See what information is visible when you simply open a website.
+</p>
+</header>
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+🌐 Network Information
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Public IP Address</h3>
+<div class="value" id="ip">Loading...</div>
+<p>Visible through your internet connection.</p>
+</div>
+
+
+<div class="card">
+<h3>Location</h3>
+<div class="value" id="location">Loading...</div>
+<p>Estimated from IP address.</p>
+</div>
+
+
+<div class="card">
+<h3>ISP</h3>
+<div class="value" id="isp">Loading...</div>
+<p>Your internet provider.</p>
+</div>
+
+</div>
+
+
+
+
+<h2 class="section-title">
+💻 Browser Information
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>User Agent</h3>
+<div class="value" id="ua"></div>
+</div>
+
+
+<div class="card">
+<h3>Language</h3>
+<div class="value" id="lang"></div>
+</div>
+
+
+<div class="card">
+<h3>Timezone</h3>
+<div class="value" id="timezone"></div>
+</div>
+
+
+<div class="card">
+<h3>Cookies</h3>
+<div class="value" id="cookies"></div>
+</div>
+
+
+</div>
+
+
+
+
+
+<h2 class="section-title">
+🖥 Device Information
+</h2>
+
+
+<div class="grid">
+
+<div class="card">
+<h3>Operating System</h3>
+<div class="value" id="os"></div>
+</div>
+
+
+<div class="card">
+<h3>Screen</h3>
+<div class="value" id="screen"></div>
+</div>
+
+
+<div class="card">
+<h3>CPU Cores</h3>
+<div class="value" id="cpu"></div>
+</div>
+
+
+<div class="card">
+<h3>RAM Estimate</h3>
+<div class="value" id="ram"></div>
+</div>
+
+
+<div class="card">
+<h3>Touch Support</h3>
+<div class="value" id="touch"></div>
+</div>
+
+
+<div class="card">
+<h3>Dark Mode</h3>
+<div class="value" id="dark"></div>
+</div>
+
+</div>
+
+
+
+
+
+<h2 class="section-title">
+🧩 Browser Features
+</h2>
+
+
+<div class="grid">
+
+<div class="card">
+<h3>Storage</h3>
+<div class="value" id="storage"></div>
+</div>
+
+
+<div class="card">
+<h3>WebGL</h3>
+<div class="value" id="webgl"></div>
+</div>
+
+
+<div class="card">
+<h3>Battery</h3>
+<div class="value" id="battery"></div>
+</div>
+
+
+<div class="card">
+<h3>Connection</h3>
+<div class="value" id="connection"></div>
+</div>
+
+</div>
+
+
+
+
+
+<h2 class="section-title">
+🧠 What Websites Can Infer
+</h2>
+
+
+<div class="warning">
+⚠️ These are guesses based on available signals. They may be wrong.
+</div>
+
+
+<div class="grid">
+
+
+<div class="card">
+<h3>Device Usage</h3>
+<div class="value">
+Possible desktop/mobile user
+</div>
+<p>
+Based on screen size and input methods.
+</p>
+</div>
+
+
+
+<div class="card">
+<h3>Technical Knowledge</h3>
+<div class="value">
+Estimated
+</div>
+<p>
+Based on browser capabilities and settings.
+</p>
+</div>
+
+
+
+<div class="card">
+<h3>Privacy Awareness</h3>
+<div class="value">
+Estimated
+</div>
+<p>
+Based on browser privacy settings.
+</p>
+</div>
+
+
+<div class="card">
+<h3>Fingerprint</h3>
+<div class="value">
+Unique combination possible
+</div>
+<p>
+Many small details can identify a browser.
+</p>
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+<footer>
+PKER05 Labs — Privacy Awareness Project
+</footer>
+
+
+
+<script>
+
+document.getElementById("ua").innerHTML = navigator.userAgent;
+
+document.getElementById("lang").innerHTML =
+navigator.language;
+
+document.getElementById("timezone").innerHTML =
+Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+
+document.getElementById("cookies").innerHTML =
+navigator.cookieEnabled ? "Enabled" : "Disabled";
+
+
+document.getElementById("screen").innerHTML =
+screen.width+" × "+screen.height;
+
+
+document.getElementById("cpu").innerHTML =
+navigator.hardwareConcurrency || "Unknown";
+
+
+document.getElementById("ram").innerHTML =
+navigator.deviceMemory ? navigator.deviceMemory+" GB" : "Unknown";
+
+
+document.getElementById("touch").innerHTML =
+'ontouchstart' in window ? "Supported" : "Not supported";
+
+
+document.getElementById("dark").innerHTML =
+window.matchMedia("(prefers-color-scheme: dark)").matches
+? "Dark mode"
+: "Light mode";
+
+
+
+document.getElementById("storage").innerHTML =
+(localStorage && sessionStorage)
+? "Local + Session Storage available"
+:"Unavailable";
+
+
+let canvas=document.createElement("canvas");
+let gl=canvas.getContext("webgl");
+
+document.getElementById("webgl").innerHTML =
+gl ? "Supported" : "Not supported";
+
+
+
+if(navigator.connection){
+
+document.getElementById("connection").innerHTML =
+navigator.connection.effectiveType;
+
+}else{
+
+document.getElementById("connection").innerHTML =
+"Unavailable";
+
+}
+
+
+
+
+if(navigator.getBattery){
+
+navigator.getBattery().then(b=>{
+document.getElementById("battery").innerHTML =
+Math.round(b.level*100)+"%";
+});
+
+}else{
+
+document.getElementById("battery").innerHTML =
+"Unavailable";
+
+}
+
+
+
+
+fetch("https://ipapi.co/json/")
+.then(res=>res.json())
+.then(data=>{
+
+document.getElementById("ip").innerHTML=data.ip;
+
+document.getElementById("location").innerHTML =
+data.country_name+"<br>"+data.city;
+
+document.getElementById("isp").innerHTML =
+data.org;
+
+})
+.catch(()=>{
+
+document.getElementById("ip").innerHTML="Blocked";
+
+});
+
+
+
+</script>
+
+
+</body>
+</html>
