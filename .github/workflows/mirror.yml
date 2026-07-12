@@ -1,0 +1,21 @@
+name: Mirror Repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push mirror
+        run: |
+          git remote add mirror https://${{ secrets.MIRROR_TOKEN }}@github.com/pker05-lab/Digital-Footprint.git
+          git push --mirror mirror
