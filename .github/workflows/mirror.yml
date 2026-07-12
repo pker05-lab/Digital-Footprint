@@ -10,12 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Push mirror
+      - name: Mirror
+        env:
+          TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
-          git remote add mirror https://x-access-token:${{ secrets.MIRROR_TOKEN }}@github.com/pker05-lab/Digital-Footprint.git
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          git remote add mirror https://x-access-token:${TOKEN}@github.com/pker05-lab/Digital-Footprint.git
+
           git push --mirror mirror
